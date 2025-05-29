@@ -22,8 +22,7 @@ namespace Code.Infrastructure.States.GameStates
             Debug.Log("[BootstrapState] Enter");
 
             await _assetProvider.InitializeAsync();
-
-            _stateMachine.Enter<LoadingMenuState, string>(_SCENE);
+            await _stateMachine.Enter<LoadingMenuState, string>(_SCENE);
         }
     }
 }

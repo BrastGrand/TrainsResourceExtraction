@@ -8,15 +8,111 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
+    public const int EntityLink = 0;
+    public const int Id = 1;
+    public const int SpriteRenderer = 2;
+    public const int Transform = 3;
+    public const int WorldPosition = 4;
+    public const int BaseMiningTime = 5;
+    public const int Mining = 6;
+    public const int MiningCompleted = 7;
+    public const int MiningTime = 8;
+    public const int MiningTimeMultiplier = 9;
+    public const int Direction = 10;
+    public const int MovementAvailable = 11;
+    public const int Moving = 12;
+    public const int Speed = 13;
+    public const int TargetDestination = 14;
+    public const int Resource = 15;
+    public const int ResourceDelivered = 16;
+    public const int ResourceMultiplier = 17;
+    public const int TotalResources = 18;
+    public const int CollectingTargetsContinuously = 19;
+    public const int CollectTargetsInterval = 20;
+    public const int CollectTargetsTimer = 21;
+    public const int LayerMask = 22;
+    public const int ProcessedTargets = 23;
+    public const int Reached = 24;
+    public const int ReadyToCollectTargets = 25;
+    public const int TargetBuffer = 26;
+    public const int Train = 27;
+    public const int CurrentNode = 28;
+    public const int IdleState = 29;
+    public const int NeedsNewTarget = 30;
+    public const int NextNodeInPath = 31;
+    public const int TargetNode = 32;
 
-
-    public const int TotalComponents = 0;
+    public const int TotalComponents = 33;
 
     public static readonly string[] componentNames = {
-
+        "EntityLink",
+        "Id",
+        "SpriteRenderer",
+        "Transform",
+        "WorldPosition",
+        "BaseMiningTime",
+        "Mining",
+        "MiningCompleted",
+        "MiningTime",
+        "MiningTimeMultiplier",
+        "Direction",
+        "MovementAvailable",
+        "Moving",
+        "Speed",
+        "TargetDestination",
+        "Resource",
+        "ResourceDelivered",
+        "ResourceMultiplier",
+        "TotalResources",
+        "CollectingTargetsContinuously",
+        "CollectTargetsInterval",
+        "CollectTargetsTimer",
+        "LayerMask",
+        "ProcessedTargets",
+        "Reached",
+        "ReadyToCollectTargets",
+        "TargetBuffer",
+        "Train",
+        "CurrentNode",
+        "IdleState",
+        "NeedsNewTarget",
+        "NextNodeInPath",
+        "TargetNode"
     };
 
     public static readonly System.Type[] componentTypes = {
-
+        typeof(Code.Gameplay.Common.EntityLink),
+        typeof(Code.Gameplay.Common.Id),
+        typeof(Code.Gameplay.Common.SpriteRendererComponent),
+        typeof(Code.Gameplay.Common.TransformComponent),
+        typeof(Code.Gameplay.Common.WorldPosition),
+        typeof(Code.Gameplay.Features.Mining.BaseMiningTime),
+        typeof(Code.Gameplay.Features.Mining.Mining),
+        typeof(Code.Gameplay.Features.Mining.MiningCompleted),
+        typeof(Code.Gameplay.Features.Mining.MiningTime),
+        typeof(Code.Gameplay.Features.Mining.MiningTimeMultiplier),
+        typeof(Code.Gameplay.Features.Movement.Direction),
+        typeof(Code.Gameplay.Features.Movement.MovementAvailable),
+        typeof(Code.Gameplay.Features.Movement.Moving),
+        typeof(Code.Gameplay.Features.Movement.Speed),
+        typeof(Code.Gameplay.Features.Movement.TargetDestination),
+        typeof(Code.Gameplay.Features.ResourceManagement.Resource),
+        typeof(Code.Gameplay.Features.ResourceManagement.ResourceDelivered),
+        typeof(Code.Gameplay.Features.ResourceManagement.ResourceMultiplier),
+        typeof(Code.Gameplay.Features.ResourceManagement.TotalResources),
+        typeof(Code.Gameplay.Features.TargetCollection.CollectingTargetsContinuously),
+        typeof(Code.Gameplay.Features.TargetCollection.CollectTargetsInterval),
+        typeof(Code.Gameplay.Features.TargetCollection.CollectTargetsTimer),
+        typeof(Code.Gameplay.Features.TargetCollection.LayerMask),
+        typeof(Code.Gameplay.Features.TargetCollection.ProcessedTargets),
+        typeof(Code.Gameplay.Features.TargetCollection.Reached),
+        typeof(Code.Gameplay.Features.TargetCollection.ReadyToCollectTargets),
+        typeof(Code.Gameplay.Features.TargetCollection.TargetBuffer),
+        typeof(Code.Gameplay.Features.Train.Train),
+        typeof(Code.Gameplay.Features.TrainAI.CurrentNode),
+        typeof(Code.Gameplay.Features.TrainAI.IdleState),
+        typeof(Code.Gameplay.Features.TrainAI.NeedsNewTarget),
+        typeof(Code.Gameplay.Features.TrainAI.NextNodeInPath),
+        typeof(Code.Gameplay.Features.TrainAI.TargetNode)
     };
 }

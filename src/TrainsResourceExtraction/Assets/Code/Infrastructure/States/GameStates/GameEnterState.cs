@@ -1,27 +1,24 @@
-using Code.Gameplay.Common.UIService;
-using Code.Gameplay.UI;
 using Code.Infrastructure.States.StateInfrastructure;
 using Code.Infrastructure.States.StateMachine;
+using Code.Gameplay.Services;
 
 namespace Code.Infrastructure.States.GameStates
 {
     public class GameEnterState : SimpleState
     {
         private readonly IGameStateMachine _stateMachine;
-        private readonly GameContext _gameContext;
-        private readonly IUIFactory _uiFactory;
+        private readonly IGameWorldInitializer _worldInitializer;
 
-        private MenuScreen _screen;
-
-        public GameEnterState(IGameStateMachine stateMachine, IUIFactory uiFactory)
+        public GameEnterState(IGameStateMachine stateMachine, IGameWorldInitializer worldInitializer)
         {
             _stateMachine = stateMachine;
-            _uiFactory = uiFactory;
+            _worldInitializer = worldInitializer;
         }
 
         public override void Enter()
         {
-
+            _worldInitializer.InitializeWorld();
+            _stateMachine.Enter<GameLoopState>();
         }
     }
 }

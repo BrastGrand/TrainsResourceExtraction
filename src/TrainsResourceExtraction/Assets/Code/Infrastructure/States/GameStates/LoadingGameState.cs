@@ -34,7 +34,7 @@ namespace Code.Infrastructure.States.GameStates
             var minTimeTask = UniTask.Delay(TimeSpan.FromSeconds(_MIN_LOADING_TIME));
 
             await UniTask.WhenAll(sceneLoadingTask, minTimeTask);
-            _stateMachine.Enter<GameEnterState>();
+            await _stateMachine.Enter<GameEnterState>();
         }
 
         protected override async void Exit()

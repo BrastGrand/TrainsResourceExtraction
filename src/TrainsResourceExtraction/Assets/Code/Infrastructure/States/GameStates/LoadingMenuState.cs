@@ -19,7 +19,7 @@ namespace Code.Infrastructure.States.GameStates
         public override async UniTask Enter(string sceneName)
         {
             await _sceneLoader.LoadScene(sceneName);
-            _stateMachine.Enter<MenuEnterState>();
+            await _stateMachine.Enter<MenuEnterState>();
         }
     }
 }

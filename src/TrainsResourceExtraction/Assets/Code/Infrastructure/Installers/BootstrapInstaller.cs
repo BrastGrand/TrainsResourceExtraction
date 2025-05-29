@@ -8,6 +8,15 @@ using Code.Infrastructure.States.Factory;
 using Code.Infrastructure.States.GameStates;
 using Code.Infrastructure.States.StateMachine;
 using Code.Infrastructure.Systems;
+using Code.Gameplay.Features.Graph;
+using Code.Gameplay.Features.ResourceManagement.Systems;
+using Code.Gameplay.Features.Mining.Systems;
+using Code.Gameplay.Features.TrainAI.Systems;
+using Code.Gameplay.Factories;
+using Code.Gameplay.Services;
+using Code.Gameplay.Configs;
+using Code.Gameplay.Features.Visualization;
+using Code.Gameplay.Features.Visualization.Systems;
 using Zenject;
 
 namespace Code.Infrastructure.Installers
@@ -22,7 +31,10 @@ namespace Code.Infrastructure.Installers
             BindSystemFactory();
             BindUIServices();
             BindContexts();
+            BindFeatureServices();
+            BindRuntimeParameters();
             BindGameplayFactories();
+            BindGameplaySystems();
             BindStateMachine();
             BindStateFactory();
             BindGameStates();
@@ -59,9 +71,51 @@ namespace Code.Infrastructure.Installers
             Container.Bind<GameContext>().FromInstance(Contexts.sharedInstance.game).AsSingle();
         }
 
+        private void BindFeatureServices()
+        {
+            Container.Bind<IGraphService>().To<GraphService>().AsSingle();
+            Container.Bind<IUIService>().To<UIService>().AsSingle();
+            Container.Bind<IGameWorldInitializer>().To<GameWorldInitializer>().AsSingle();
+            Container.Bind<ISceneHierarchyService>().To<SceneHierarchyService>().AsSingle();
+        }
+
         private void BindGameplayFactories()
         {
+            Container.Bind<ITrainFactory>().To<TrainFactory>().AsSingle();
+        }
 
+        private void BindRuntimeParameters()
+        {
+            // Контроллер runtime параметров - регистрируем ДО GameWorldInitializer
+            Container.Bind<RuntimeParametersController>().FromNewComponentOnNewGameObject().AsSingle().NonLazy();
+        }
+
+        private void BindGameplaySystems()
+        {
+            // ResourceManagement Systems
+            Container.Bind<UpdateTotalResourcesSystem>().AsSingle();
+            Container.Bind<UpdateResourcesUISystem>().AsSingle();
+            
+            // Mining Systems
+            Container.Bind<ProcessMiningSystem>().AsSingle();
+            Container.Bind<CompleteMiningSystem>().AsSingle();
+            
+            // TrainAI Systems
+            Container.Bind<InitializeTrainAISystem>().AsSingle();
+            Container.Bind<TrainStateManagerSystem>().AsSingle();
+            Container.Bind<SelectTargetNodeSystem>().AsSingle();
+            Container.Bind<StartMovementToTargetSystem>().AsSingle();
+            
+            // Visualization Registry
+            Container.Bind<NodeViewRegistry>().AsSingle();
+            
+            // Visualization Systems
+            Container.Bind<CreateNodeViewSystem>().AsSingle();
+            Container.Bind<CreateTrainViewSystem>().AsSingle();
+            Container.Bind<CreateTrainViewReactiveSystem>().AsSingle();
+            Container.Bind<UpdateTrainViewSystem>().AsSingle();
+            Container.Bind<UpdateNodeViewSystem>().AsSingle();
+            Container.Bind<GraphVisualizationSystem>().AsSingle();
         }
 
         private void BindSystemFactory()
